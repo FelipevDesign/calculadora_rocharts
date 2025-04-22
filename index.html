@@ -276,5 +276,115 @@
                         <input type="number" id="profit-percentage" min="0" max="1000" step="1" value="40">
                         <div class="tooltip">
                             <i class="fas fa-question-circle"></i>
-                            <span 
-(Content truncated due to size limit. Use line ranges to read in chunks)
+                            <span class="tooltiptext">Recomendação: entre 30% e 50% para joias artesanais.</span>
+                        </div>
+                    </div>
+                    <div class="result-group">
+                        <label>Valor de Lucro:</label>
+                        <span id="profit-value">R$ 0,00</span>
+                    </div>
+                </section>
+
+                <!-- Seção 7: Valor Artístico -->
+                <section class="form-section" id="artistic-value">
+                    <h2><i class="fas fa-paint-brush"></i> Valor Artístico</h2>
+                    <div class="form-group">
+                        <label for="artistic-factor">Fator de valor artístico (multiplicador):</label>
+                        <input type="number" id="artistic-factor" min="1" max="10" step="0.1" value="1">
+                        <div class="tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltiptext">Use este multiplicador para peças com alto valor artístico ou exclusividade. 1 = sem ajuste, 2 = dobro do valor, etc.</span>
+                        </div>
+                    </div>
+                    <div class="result-group">
+                        <label>Ajuste por Valor Artístico:</label>
+                        <span id="artistic-adjustment">R$ 0,00</span>
+                    </div>
+                </section>
+
+                <!-- Seção 8: Resumo e Preço Final -->
+                <section class="form-section result-section" id="final-price">
+                    <h2><i class="fas fa-receipt"></i> Resumo e Preço Final</h2>
+                    <div class="summary-container">
+                        <div class="summary-item">
+                            <label>Custo de Materiais:</label>
+                            <span id="summary-materials">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item">
+                            <label>Custo de Mão de Obra:</label>
+                            <span id="summary-labor">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item">
+                            <label>Despesas Indiretas:</label>
+                            <span id="summary-expenses">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item">
+                            <label>Impostos e Taxas:</label>
+                            <span id="summary-taxes">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item">
+                            <label>Lucro:</label>
+                            <span id="summary-profit">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item">
+                            <label>Ajuste Artístico:</label>
+                            <span id="summary-artistic">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item total">
+                            <label>Custo Total:</label>
+                            <span id="summary-cost">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item total">
+                            <label>Preço Final Sugerido:</label>
+                            <span id="final-price-value">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="price-chart"></canvas>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="round-price">Arredondar preço para:</label>
+                        <select id="round-price">
+                            <option value="none">Não arredondar</option>
+                            <option value="0.5">Múltiplos de R$ 0,50</option>
+                            <option value="1">Múltiplos de R$ 1,00</option>
+                            <option value="5">Múltiplos de R$ 5,00</option>
+                            <option value="10">Múltiplos de R$ 10,00</option>
+                            <option value="50">Múltiplos de R$ 50,00</option>
+                            <option value="100">Múltiplos de R$ 100,00</option>
+                        </select>
+                    </div>
+                    <div class="result-group rounded-price">
+                        <label>Preço Final Arredondado:</label>
+                        <span id="rounded-price">R$ 0,00</span>
+                    </div>
+                </section>
+
+                <!-- Botões de Ação -->
+                <div class="action-buttons">
+                    <button type="button" id="save-calculation" class="action-button"><i class="fas fa-save"></i> Salvar Cálculo</button>
+                    <button type="button" id="load-calculation" class="action-button"><i class="fas fa-folder-open"></i> Carregar Cálculo</button>
+                    <button type="button" id="export-pdf" class="action-button"><i class="fas fa-file-pdf"></i> Exportar PDF</button>
+                    <button type="button" id="reset-form" class="action-button"><i class="fas fa-undo"></i> Limpar Formulário</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="saved-calculations" class="hidden">
+            <h3>Cálculos Salvos</h3>
+            <div id="saved-list"></div>
+            <button id="close-saved" class="action-button"><i class="fas fa-times"></i> Fechar</button>
+        </div>
+
+        <footer>
+            <p>Calculadora de Precificação para Joias Artesanais em Cobre &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
